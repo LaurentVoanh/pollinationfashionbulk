@@ -3,3 +3,9 @@ if needed, add mail and admin password in the exemple page like atelier.php
 open bulk.php to generate image
 in bulk.php you can also activate 3 slots at the same time
 Change todo.txt to add, remove, change the pre prompt.
+Create the folder etape1 favoris image user
+
+If you need beter image quality, upgrade the model in bulk.php and atelier.php
+Mistral api key give 1b token each mounth for free (2026 terms)
+You can also use 100% pollination for the txt 2 img and Img to txt, by changing the code
+I will do it in version 2
