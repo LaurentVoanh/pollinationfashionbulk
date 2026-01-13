@@ -29,7 +29,7 @@ Store Management: Integrated "Favorites" system and shop front-end.
 Massive Scalability: Built to handle millions of JSON entries efficiently.
 
 💰 Generation Power & Costs
-Based on the Pollinations "Pollen" system ($5 for 5 Pollens):
+Based on the Pollinations "Pollen" system ($5 for 5 Pollens , january 2026 prices):
 
 $5 (5 Pollens): 16,500 images
 
