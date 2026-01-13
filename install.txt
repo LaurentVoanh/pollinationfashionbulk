@@ -1,0 +1,5 @@
+Add your Pollination and Mistral API KEY in the .php page (ex : bulk.php)
+if needed, add mail and admin password in the exemple page like atelier.php
+open bulk.php to generate image
+in bulk.php you can also activate 3 slots at the same time
+Change todo.txt to add, remove, change the pre prompt.
