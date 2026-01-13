@@ -46,7 +46,7 @@ For a $1,000 investment, you can establish a catalog of 3.3 million unique desig
 
 Links & Contact:
 
-Live Demo: hautecouture.today
+Live Demo: https://hautecouture.today
 
 GitHub: LaurentVoanh/pollinationfashionbulk
 
