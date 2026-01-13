@@ -1,0 +1,434 @@
+/* ---------------------------------------------------------
+   CONFIGURATIONS DE BASE
+   --------------------------------------------------------- */
+:root { 
+    --bg: #ffffff;
+    --text: #1a1a1a; 
+    --light: #f9f9f9; 
+    --accent: #000000; 
+    --border: #e0e0e0;
+    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+*
+/* Nettoyage du sélecteur global */
+* { 
+    box-sizing: border-box; 
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Règle de sécurité pour TOUTES les images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centre l'image si elle est plus petite que l'écran */
+}
+
+{ 
+    box-sizing: border-box; 
+    -webkit-tap-highlight-color: transparent;
+}
+
+body { 
+    background: var(--bg); 
+    color: var(--text); 
+    font-family: var(--font-main); 
+    margin: 0; 
+    padding: 0; 
+    -webkit-font-smoothing: antialiased; 
+    padding-bottom: 80px;
+    /* CORRECTIF : Empêche le défilement horizontal et l'espace blanc à droite */
+    overflow-x: hidden; [cite: 554, 598]
+}
+
+/* ---------------------------------------------------------
+   HEADER & NAVIGATION
+   --------------------------------------------------------- */
+header { 
+    padding: 15px 30px; 
+    border-bottom: 1px solid var(--border); 
+    display: flex; 
+    justify-content: space-between;
+    align-items: center; 
+    position: sticky; 
+    top: 0; 
+    background: rgba(255,255,255,0.95); 
+    z-index: 1000; 
+    backdrop-filter: blur(5px);
+}
+
+.brand { 
+    font-size: 1rem; 
+    font-weight: 700; 
+    text-decoration: none; 
+    color: var(--accent); 
+    letter-spacing: 1px; 
+}
+
+.nav-links { 
+    display: flex; 
+    gap: 20px; 
+    align-items: center; 
+}
+
+.nav-links a { 
+    text-decoration: none;
+    color: var(--text); 
+    font-size: 0.75rem; 
+    text-transform: uppercase; 
+    font-weight: 600; 
+    display: flex; 
+    align-items: center; 
+}
+
+.badge { 
+    background: var(--accent); 
+    color: white;
+    padding: 2px 6px; 
+    border-radius: 99px; 
+    font-size: 0.6rem; 
+    margin-left: 6px; 
+    font-weight: bold;
+}
+
+/* ---------------------------------------------------------
+   GRILLE E-COMMERCE (CORRIGÉE : 1 COLONNE MOBILE)
+   --------------------------------------------------------- */
+.container { 
+    padding: 15px; /* Réduit un peu pour gagner de la place */
+    max-width: 100%; 
+    margin: 0 auto; 
+    width: 100%; 
+}
+
+.grid { 
+    display: grid; 
+    width: 100%; 
+    /* ICI : 1 seule image par ligne sur smartphone */
+    grid-template-columns: 1fr; 
+    gap: 25px; /* Un peu plus d'espace entre les produits */
+}
+
+/* Tablettes (2 colonnes) */
+@media (min-width: 600px) {
+    .grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 20px;
+    }
+}
+
+/* PC Portable (3 colonnes) */
+@media (min-width: 768px) {
+    .grid { 
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 20px;
+    }
+}
+
+/* Grand écran PC (4 colonnes) */
+@media (min-width: 1024px) {
+    .grid { 
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 30px;
+    }
+}
+/* ---------------------------------------------------------
+   CARTES PRODUITS
+   --------------------------------------------------------- */
+.card { 
+    display: flex; 
+    flex-direction: column; 
+    position: relative; 
+    transition: transform 0.2s ease; 
+    width: 100%;
+}
+
+.card:hover { 
+    transform: translateY(-3px);
+}
+
+.card-img-wrap { 
+    position: relative; 
+    width: 100%; 
+    aspect-ratio: 3/4; 
+    background: var(--light); 
+    overflow: hidden; 
+    border-radius: 2px;
+}
+
+/* REMPLACEZ VOTRE BLOC EXISTANT PAR CELUI-CI */
+.card-img-wrap img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; /* L'image remplit le carré sans se déformer */
+    display: block; 
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-img-wrap img { 
+    transform: scale(1.05); 
+}
+
+.fav-btn { 
+    position: absolute; 
+    top: 10px; 
+    right: 10px;
+    background: white; 
+    border: none; 
+    border-radius: 50%; 
+    width: 30px; 
+    height: 30px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    cursor: pointer; 
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15); 
+    transition: all 0.2s;
+}
+
+.fav-btn svg { 
+    width: 16px; 
+    height: 16px;
+    fill: none; 
+    stroke: black; 
+    stroke-width: 1.5; 
+}
+
+.fav-btn.active svg { 
+    fill: #E74C3C; 
+    stroke: #E74C3C; 
+}
+
+.card-info { 
+    padding-top: 10px;
+}
+
+.card-title { 
+    font-size: 0.8rem; 
+    font-weight: 600; 
+    text-transform: capitalize; 
+    margin-bottom: 4px; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+
+.card-price { 
+    font-size: 0.8rem;
+    color: #666; 
+}
+
+.actions { 
+    margin-top: 10px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.btn-details { 
+    background: none; 
+    border: none;
+    border-bottom: 1px solid black; 
+    padding: 0; 
+    font-size: 0.7rem; 
+    text-transform: uppercase; 
+    cursor: pointer; 
+}
+
+.btn-add { 
+    background: black; 
+    color: white; 
+    text-decoration: none;
+    padding: 8px 14px; 
+    font-size: 0.7rem; 
+    text-transform: uppercase; 
+    font-weight: 600; 
+    border-radius: 2px; 
+}
+
+/* ---------------------------------------------------------
+   FORMULAIRES & ATELIER
+   --------------------------------------------------------- */
+.form-group { 
+    background: white; 
+    padding: 25px;
+    border-radius: 8px; 
+    border: 1px solid #eee; 
+    margin-bottom: 30px; 
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03); 
+}
+
+label { 
+    display: block; 
+    font-size: 0.75rem;
+    font-weight: bold; 
+    margin-bottom: 6px; 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px; 
+    color: #555; 
+}
+
+input, select, textarea { 
+    width: 100%; 
+    padding: 12px;
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 16px; /* Changez 0.95rem par 16px */
+    background: #fff; 
+    font-family: inherit; 
+}
+
+.mic-btn {
+    position: absolute; 
+    right: 10px; 
+    top: 10px;
+    background: transparent;
+    border: none; 
+    cursor: pointer;
+    font-size: 1.2rem; 
+    padding: 5px; 
+    opacity: 0.6;
+}
+
+.mic-btn.listening { 
+    color: #E74C3C; 
+    opacity: 1;
+    animation: pulse 1.5s infinite; 
+}
+
+@keyframes pulse { 
+    0% { transform: scale(1); } 
+    50% { transform: scale(1.1); } 
+    100% { transform: scale(1); } 
+}
+
+.btn-submit { 
+    width: 100%; 
+    padding: 15px; 
+    background: var(--accent); 
+    color: white; 
+    border: none; 
+    font-weight: bold;
+    cursor: pointer; 
+    text-transform: uppercase; 
+    margin-top: 15px; 
+    border-radius: 4px; 
+    letter-spacing: 1px;
+}
+
+/* ---------------------------------------------------------
+   LIVE PREVIEW & MODAL
+   --------------------------------------------------------- */
+#live-preview { 
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    width: 160px;
+    background: white; 
+    padding: 5px; 
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2); 
+    z-index: 2000; 
+    display: none; 
+    border: 1px solid #ddd;
+}
+
+#live-preview img { 
+    width: 100%; 
+    border-radius: 4px;
+    display: block; 
+}
+
+.spinner { 
+    display: inline-block; 
+    width: 12px; 
+    height: 12px; 
+    border: 2px solid rgba(0,0,0,0.1); 
+    border-top-color: #000; 
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite; 
+    margin-left: 8px; 
+}
+
+@keyframes spin { 
+    to { transform: rotate(360deg); } 
+}
+
+.modal-overlay { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.7); 
+    z-index: 2000;
+    display: none; 
+    justify-content: center; 
+    align-items: center; 
+    backdrop-filter: blur(4px); 
+}
+
+.modal-content { 
+    width: 95%; 
+    max-width: 1100px; 
+    height: 90vh; 
+    background: white; 
+    position: relative;
+    border-radius: 4px; 
+    overflow: hidden; 
+}
+
+/* ---------------------------------------------------------
+   DÉTAILS PRODUIT (CORRECTIFS POPUP)
+   --------------------------------------------------------- */
+.details-container { 
+    display: flex; 
+    /* CORRECTIF : Utilise 100% de la modal et non l'écran entier */
+    height: 100%; [cite: 587, 434]
+    width: 100%;
+    overflow: hidden; 
+}
+
+.details-img-col { 
+    /* CORRECTIF : Un peu plus large pour l'image (60/40) */
+    flex: 1.2; [cite: 587, 435]
+    background: #f0f0f0; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 20px;
+    height: 100%;
+}
+
+.details-img-col img { 
+    max-width: 100%; 
+    max-height: 90%; 
+    object-fit: contain; 
+}
+
+.details-info-col { 
+    flex: 1; 
+    background: white;
+    padding: 50px; 
+    overflow-y: auto; 
+    max-width: 600px; 
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .details-container { 
+        flex-direction: column; 
+        height: auto;
+        overflow: auto; 
+    }
+    .details-img-col { 
+        height: 50vh; 
+        width: 100%; 
+    }
+    .details-info-col { 
+        padding: 30px 20px; 
+        max-width: 100%; 
+    }
+}
